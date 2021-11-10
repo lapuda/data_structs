@@ -14,7 +14,6 @@ type Node struct {
 	IsBranch bool
 	IsLeaf   bool
 	IsRoot   bool
-	Dep      int
 }
 
 // Insert 插入节点
@@ -28,7 +27,6 @@ func (thisNode *Node) Insert(insertValue int64) {
 	if thisNode.More(insertNode) {
 		if thisNode.Left == nil {
 			thisNode.Left = &insertNode
-			thisNode.Dep++
 		} else {
 			thisNode.Left.IsBranch = true
 			thisNode.Left.IsLeaf = false
@@ -39,7 +37,6 @@ func (thisNode *Node) Insert(insertValue int64) {
 	if thisNode.Less(insertNode) {
 		if thisNode.Right == nil {
 			thisNode.Right = &insertNode
-			thisNode.Dep++
 		} else {
 			thisNode.Right.IsBranch = true
 			thisNode.Right.IsLeaf = false
